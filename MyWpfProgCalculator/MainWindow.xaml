@@ -1,0 +1,131 @@
+﻿<Window x:Class="MyWpfProgCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyWpfProgCalculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="440"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="640"/>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="txtCalcAuxDisplay" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="415" Height="35" TextAlignment="Right" BorderThickness="0" Grid.Row="0" Grid.Column="1"/>
+        <TextBox x:Name="txtCalcMainDisplay" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="65" FontSize="30" TextAlignment="Right" BorderThickness="0"  Grid.Row="1" Grid.Column="1" Width="600"/>
+
+        <TabControl Name="MyTabControl" Grid.Row="2" Grid.Column="1">
+            <TabItem Header="Standard Calc" HorizontalAlignment="Left" Width="79" Height="26" VerticalAlignment="Center"  Selector.Selected="TabItem_Selected">
+                <Grid Width="600">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btn_StdCalc_PercOper" Content="%" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold"/>
+                    <Button x:Name="btn_StdCalc_CEOper" Content="CE" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="1"/>
+                    <Button x:Name="btn_StdCalc_COper" Content="C" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="2" Click="BtnCOper_Click"/>
+                    <Button x:Name="btn_StdCalc_DelOper" Content="Del" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="3" Click="BtnDelOper_Click"/>
+                    <Button x:Name="btn_StdCalc_ModOper" Content="mod" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_StdCalc_ExpOper" Content="^" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_StdCalc_DivisionOper" Content="/" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="3" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit7" Content="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit8" Content="8" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="1" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit9" Content="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="2" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_MultiplicOper" Content="x" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="3" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit4" Content="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="0" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit5" Content="5" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="1" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit6" Content="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="2" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_SubstractOper" Content="-" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="3" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit1" Content="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="0" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit2" Content="2" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="1" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_Digit3" Content="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="2" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_AdditionOper" Content="+" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="3" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_StdCalc_MinusOrPlus" Content="+/-" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="0"/>
+                    <Button x:Name="btn_StdCalc_Digit0" Content="0" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="1" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_StdCalc_DecPoint" Content="." HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="2"/>
+                    <Button x:Name="btn_StdCalc_EqualOper" Content="=" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="3"/>
+                    <Button x:Name="btn_StdCalc_FactOper" Content="n!" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="5"/>
+                    <Button x:Name="btn_StdCalc_FibOper" Content="fib" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="6"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Scientific Calc" Height="26" Margin="0,0,0,0" VerticalAlignment="Bottom"  Selector.Selected="TabItem_Selected">
+                <Grid Width="600">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btn_SciCalc_PercOper" Content="%" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_CEOper" Content="CE" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btn_SciCalc_COper" Content="C" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="3" Click="BtnCOper_Click"/>
+                    <Button x:Name="btn_SciCalc_DelOper" Content="Del" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="4" Click="BtnDelOper_Click"/>
+                    <Button x:Name="btn_SciCalc_ModOper" Content="mod" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_ExpOper" Content="^" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_NthRootOper" Content="√" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="3" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_DivisionOper" Content="/" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="4" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit7" Content="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Click="BtnDigit_Click" />
+                    <Button x:Name="btn_SciCalc_Digit8" Content="8" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit9" Content="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="3" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_MultiplicOper" Content="x" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="4" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit4" Content="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit5" Content="5" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit6" Content="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="3" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_SubstractOper" Content="-" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="4" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit1" Content="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit2" Content="2" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_Digit3" Content="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="3" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_AdditionOper" Content="+" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="4" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_MinusOrPlus" Content="+/-" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5"/>
+                    <Button x:Name="btn_SciCalc_Digit0" Content="0" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnDigit_Click"/>
+                    <Button x:Name="btn_SciCalc_DecPoint" Content="." HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="3" Click="BtnBinaryOperator_Click"/>
+                    <Button x:Name="btn_SciCalc_EqualOper" Content="=" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="4"/>
+                    <Button x:Name="btn_SciCalc_SinOper" Content="sin" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="6"/>
+                    <Button x:Name="btn_SciCalc_CosOper" Content="cos" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="7"/>
+                    <Button x:Name="btn_SciCalc_TanOper" Content="tan" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="6"/>
+                    <Button x:Name="btn_SciCalc_CotOper" Content="cot" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold"  Grid.Row="1" Grid.Column="7"/>
+                    <Button x:Name="btn_SciCalc_LogOper" Content="log" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="6"/>
+                    <Button x:Name="btn_SciCalc_LnOper" Content="ln" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="7"/>
+                    <Button x:Name="btn_SciCalc_FactOper" Content="n!" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="6"/>
+                    <Button x:Name="btn_SciCalc_FibOper" Content="fib" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="7"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Imaginary Calc" Height="26" Margin="0,0,0,0" VerticalAlignment="Top"  Selector.Selected="TabItem_Selected"/>
+        </TabControl>
+        <Label Grid.Row="3">Selected:</Label>
+        <Label Grid.Row="3" Grid.Column="2" Name="SelectedTabLabel"/>
+    </Grid>
+</Window>
