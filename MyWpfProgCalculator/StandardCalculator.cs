@@ -4,17 +4,13 @@ namespace MyWpfProgCalculator
 {
     public class StandardCalculator : ACalculator
     {
-        //public double CurrResult { get; set; }
-
-        //public override CalcOperations LastOperation { get; set; }
-
         public bool PreviousBtnWasOper { get; set; }
 
         public StandardCalculator()
         {
             CurrResult = 0;
-            LastOperation = CalcOperations.none;
             StrMainDisplay = "0";
+            LastOperation = CalcOperations.none;            
             StrAuxDisplay = "";
             PreviousBtnWasOper = false;
         }
