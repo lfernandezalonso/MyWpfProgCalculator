@@ -139,76 +139,50 @@ namespace MyWpfProgCalculator
             return true;
         }
 
-        private void BtnFibOper_Click(object sender, RoutedEventArgs e)
-        {
-            if (myCalculator.LastOperation != CalcOperations.none)
-            {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
-            } 
-            (myCalculator as StandardCalculator).Fibonacci(long.Parse(txtCalcMainDisplay.Text));
-            txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
-            myCalculator.LastOperation = CalcOperations.none;
-        }
-
-        private void BtnFactOper_Click(object sender, RoutedEventArgs e)
-        {
-            if (myCalculator.LastOperation != CalcOperations.none)
-            {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
-            }
-            (myCalculator as StandardCalculator).Factorial(long.Parse(txtCalcMainDisplay.Text));
-            txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
-            myCalculator.LastOperation = CalcOperations.none;
-        }
-
-        private void BtnSinOper_Click(object sender, RoutedEventArgs e)
-        {
-            if (myCalculator.LastOperation != CalcOperations.none)
-            {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
-            }
-            myCalculator.CurrResult = Math.Sin(double.Parse(txtCalcMainDisplay.Text));
-            txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
-            myCalculator.LastOperation = CalcOperations.none;
-        }
-
-        private void BtnCosOper_Click(object sender, RoutedEventArgs e)
-        {
-            if (myCalculator.LastOperation != CalcOperations.none)
-            {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
-            }
-            myCalculator.CurrResult = Math.Cos(double.Parse(txtCalcMainDisplay.Text));
-            txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
-            myCalculator.LastOperation = CalcOperations.none;
-        }
-
-        private void BtnTanOper_Click(object sender, RoutedEventArgs e)
-        {
-            if (myCalculator.LastOperation != CalcOperations.none)
-            {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
-            }
-            myCalculator.CurrResult = Math.Tan(double.Parse(txtCalcMainDisplay.Text));
-            txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
-            myCalculator.LastOperation = CalcOperations.none;
-        }
-
-        private void BtnCotOper_Click(object sender, RoutedEventArgs e)
-        {
-            if (myCalculator.LastOperation != CalcOperations.none)
-            {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
-            }
-            myCalculator.CurrResult = Math.Tan(double.Parse(txtCalcMainDisplay.Text));
-            txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
-            myCalculator.LastOperation = CalcOperations.none;
-        }
-
         private void BtnDelOper_Click(object sender, RoutedEventArgs e)
         {
             myCalculator.DelChar();
             txtCalcMainDisplay.Text = myCalculator.StrMainDisplay;
+        }
+
+        private void BtnUnitaryOper_Click(object sender, RoutedEventArgs e)
+        {
+            if (myCalculator.LastOperation != CalcOperations.none)
+            {
+                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
+                myCalculator.LastOperation = CalcOperations.none;
+            }
+            var sTemp = ((Button)sender).Content.ToString();
+            if (sTemp == "fib")
+            {
+                (myCalculator as StandardCalculator).Fibonacci(long.Parse(txtCalcMainDisplay.Text));
+            }
+            if (sTemp == "n!")
+            {
+                (myCalculator as StandardCalculator).Factorial(long.Parse(txtCalcMainDisplay.Text));
+            }
+            if (sTemp == "sin")
+            {
+                (myCalculator as ScientificCalculator).Sin(double.Parse(txtCalcMainDisplay.Text));
+            }
+            if (sTemp == "cos")
+            {
+                (myCalculator as ScientificCalculator).Cos(double.Parse(txtCalcMainDisplay.Text));
+            }
+            if (sTemp == "tan")
+            {
+                (myCalculator as ScientificCalculator).Tan(double.Parse(txtCalcMainDisplay.Text));
+            }
+            if (sTemp == "cot")
+            {
+                (myCalculator as ScientificCalculator).Cot(double.Parse(txtCalcMainDisplay.Text));
+            }
+            if (sTemp == "+/-")
+            {
+                myCalculator.ChangeSign(double.Parse(txtCalcMainDisplay.Text));
+            }
+            myCalculator.StrMainDisplay = myCalculator.CurrResult.ToString();
+            txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
         }
 
     }

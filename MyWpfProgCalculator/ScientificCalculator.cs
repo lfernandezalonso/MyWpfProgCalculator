@@ -54,6 +54,11 @@ namespace MyWpfProgCalculator
             CurrResult = (value * (CurrResult/100));
         }
 
+        public override void ChangeSign(double value)
+        {
+            CurrResult = -value;
+        }
+
         public virtual void NthRoot(double value)
         {
             CurrResult = Math.Pow(CurrResult, 1/value);
@@ -108,5 +113,23 @@ namespace MyWpfProgCalculator
             }
         }
 
+        public void Sin(double x)
+        {          
+            CurrResult = Math.Sin(x);
+        }
+
+        public void Cos(double x)
+        {
+            CurrResult = Math.Cos(x);
+        }
+        public void Tan(double x)
+        {
+            CurrResult = Math.Tan(x);
+        }
+
+        public void Cot(double x)
+        {
+            CurrResult = 1/Math.Tan(x);
+        }
     }
 }

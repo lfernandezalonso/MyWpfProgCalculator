@@ -4,7 +4,7 @@ namespace MyWpfProgCalculator
 {
     public enum CalcOperations
     {
-        none, addition, substraction, multiplication, division, modulus, percent, result, power, nthroot, sin, cos, tan, fibonacci, factorial
+        none, addition, substraction, multiplication, division, modulus, percent, result, power, nthroot, changesign, sin, cos, tan, fibonacci, factorial
     }
 
     public abstract class ACalculator
@@ -41,6 +41,8 @@ namespace MyWpfProgCalculator
         public abstract void Modulus(double value);
 
         public abstract void Power(double value);
+
+        public abstract void ChangeSign(double value);
 
         public abstract void DelChar();
 

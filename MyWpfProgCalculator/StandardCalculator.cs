@@ -121,6 +121,11 @@ namespace MyWpfProgCalculator
             CurrResult = Math.Pow(CurrResult, value);
         }
 
+        public override void ChangeSign(double value) 
+        {
+            CurrResult = -value; 
+        }
+
         public override void DelChar() 
         {
             var nTemp = StrMainDisplay.Length;
