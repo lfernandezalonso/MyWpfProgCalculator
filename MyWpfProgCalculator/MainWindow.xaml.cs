@@ -1,10 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace MyWpfProgCalculator
 {
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -12,11 +10,13 @@ namespace MyWpfProgCalculator
     {
         private bool previousBtnWasOper;
         private ACalculator myCalculator;
+        private string sPreviousTab; 
  
         public MainWindow()
         {
             InitializeComponent();
 
+            sPreviousTab = "";
         }
 
         private string GetSelectedTabHeader(TabItem tItem)
@@ -27,27 +27,33 @@ namespace MyWpfProgCalculator
 
         private void TabItem_Selected(object sender, RoutedEventArgs e)
         {
-            var sTemp = GetSelectedTabHeader(sender as TabItem);
-            if (sTemp == "STANDARD CALC")
+            var sCurrTab = GetSelectedTabHeader(sender as TabItem);
+            if (sCurrTab != sPreviousTab)
             {
-                myCalculator = new StandardCalculator();
+                if (sCurrTab == "STANDARD CALC")
+                {
+                    myCalculator = new StandardCalculator();
+                }
+                if (sCurrTab == "SCIENTIFIC CALC")
+                {
+                    myCalculator = new ScientificCalculator();
+                }
+                if (myCalculator == null)
+                    myCalculator = new StandardCalculator();
+
+                txtCalcMainDisplay.Text = myCalculator.StrMainDisplay;
+                txtCalcAuxDisplay.Text = myCalculator.StrAuxDisplay;
+                rtbHistory.Document.Blocks.Clear();
+                sPreviousTab = sCurrTab;
             }
-            if (sTemp == "SCIENTIFIC CALC")
-            {
-                myCalculator = new ScientificCalculator();
-            }
-            if (myCalculator == null)
-                myCalculator = new StandardCalculator();
-            txtCalcMainDisplay.Text = myCalculator.StrMainDisplay;
-            txtCalcAuxDisplay.Text = myCalculator.StrAuxDisplay; 
         }
 
         private void BtnDigit_Click(object sender, RoutedEventArgs e)
         {
             string strTemp = ((Button) sender).Content.ToString();
             myCalculator.ProcessDigitInput(strTemp);
-            this.txtCalcMainDisplay.Text = myCalculator.StrMainDisplay;
-            this.txtCalcAuxDisplay.Text = myCalculator.StrAuxDisplay;
+            txtCalcMainDisplay.Text = myCalculator.StrMainDisplay;
+            txtCalcAuxDisplay.Text = myCalculator.StrAuxDisplay;
             if (!AreOperationButtonsEnabled()) 
             {
                 EnableOperationButtons(true);
@@ -78,42 +84,21 @@ namespace MyWpfProgCalculator
             var sTemp = GetSelectedTabHeader(MyTabControl.SelectedItem as TabItem);
             if (sTemp == "STANDARD CALC")
             {
-                btn_StdCalc_AdditionOper.IsEnabled = bValue;
-                btn_StdCalc_SubstractOper.IsEnabled = bValue;
-                btn_StdCalc_MultiplicOper.IsEnabled = bValue;
-                btn_StdCalc_DivisionOper.IsEnabled = bValue;
-                btn_StdCalc_ModOper.IsEnabled = bValue;
-                btn_StdCalc_ExpOper.IsEnabled = bValue;
-                btn_StdCalc_PercOper.IsEnabled = bValue;
-                btn_StdCalc_MinusOrPlus.IsEnabled = bValue;
-                btn_StdCalc_DecPoint.IsEnabled = bValue;
-                btn_StdCalc_FactOper.IsEnabled = bValue;
-                btn_StdCalc_FibOper.IsEnabled = bValue;
-                btn_StdCalc_DelOper.IsEnabled = bValue;
+                btn_StdCalc_AdditionOper.IsEnabled = bValue; btn_StdCalc_SubstractOper.IsEnabled = bValue; btn_StdCalc_MultiplicOper.IsEnabled = bValue;
+                btn_StdCalc_DivisionOper.IsEnabled = bValue; btn_StdCalc_ModOper.IsEnabled = bValue; btn_StdCalc_ExpOper.IsEnabled = bValue;
+                btn_StdCalc_PercOper.IsEnabled = bValue; btn_StdCalc_MinusOrPlus.IsEnabled = bValue; btn_StdCalc_DecPoint.IsEnabled = bValue; 
+                btn_StdCalc_FactOper.IsEnabled = bValue; btn_StdCalc_FibOper.IsEnabled = bValue; btn_StdCalc_DelOper.IsEnabled = bValue;
                 btn_StdCalc_EqualOper.IsEnabled = bValue;
             }
             if (sTemp == "SCIENTIFIC CALC")
             {
-                btn_SciCalc_AdditionOper.IsEnabled = bValue;
-                btn_SciCalc_SubstractOper.IsEnabled = bValue;
-                btn_SciCalc_MultiplicOper.IsEnabled = bValue;
-                btn_SciCalc_DivisionOper.IsEnabled = bValue;
-                btn_SciCalc_ModOper.IsEnabled = bValue;
-                btn_SciCalc_ExpOper.IsEnabled = bValue;
-                btn_SciCalc_NthRootOper.IsEnabled = bValue;
-                btn_SciCalc_PercOper.IsEnabled = bValue;
-                btn_SciCalc_SinOper.IsEnabled = bValue;
-                btn_SciCalc_CosOper.IsEnabled = bValue;
-                btn_SciCalc_TanOper.IsEnabled = bValue;
-                btn_SciCalc_CotOper.IsEnabled = bValue;
-                btn_SciCalc_MinusOrPlus.IsEnabled = bValue;
-                btn_SciCalc_DecPoint.IsEnabled = bValue;
-                btn_SciCalc_LogOper.IsEnabled = bValue;
-                btn_SciCalc_LnOper.IsEnabled = bValue;
-                btn_SciCalc_FactOper.IsEnabled = bValue;
-                btn_SciCalc_FibOper.IsEnabled = bValue;
-                btn_SciCalc_DelOper.IsEnabled = bValue;
-                btn_SciCalc_EqualOper.IsEnabled = bValue;
+                btn_SciCalc_AdditionOper.IsEnabled = bValue; btn_SciCalc_SubstractOper.IsEnabled = bValue; btn_SciCalc_MultiplicOper.IsEnabled = bValue;
+                btn_SciCalc_DivisionOper.IsEnabled = bValue; btn_SciCalc_ModOper.IsEnabled = bValue; btn_SciCalc_ExpOper.IsEnabled = bValue;
+                btn_SciCalc_NthRootOper.IsEnabled = bValue; btn_SciCalc_PercOper.IsEnabled = bValue; btn_SciCalc_SinOper.IsEnabled = bValue;
+                btn_SciCalc_CosOper.IsEnabled = bValue; btn_SciCalc_TanOper.IsEnabled = bValue; btn_SciCalc_CotOper.IsEnabled = bValue;
+                btn_SciCalc_MinusOrPlus.IsEnabled = bValue; btn_SciCalc_DecPoint.IsEnabled = bValue; btn_SciCalc_LogOper.IsEnabled = bValue;
+                btn_SciCalc_LnOper.IsEnabled = bValue; btn_SciCalc_FactOper.IsEnabled = bValue; btn_SciCalc_FibOper.IsEnabled = bValue;
+                btn_SciCalc_DelOper.IsEnabled = bValue; btn_SciCalc_EqualOper.IsEnabled = bValue;
             }
         } 
 
@@ -156,34 +141,50 @@ namespace MyWpfProgCalculator
             if (sTemp == "fib")
             {
                 (myCalculator as StandardCalculator).Fibonacci(long.Parse(txtCalcMainDisplay.Text));
+                rtbHistory.Document.ContentStart.InsertTextInRun(sTemp + "\n");
             }
             if (sTemp == "n!")
             {
                 (myCalculator as StandardCalculator).Factorial(long.Parse(txtCalcMainDisplay.Text));
+                rtbHistory.Document.ContentStart.InsertTextInRun(sTemp + "\n");
             }
             if (sTemp == "sin")
             {
                 (myCalculator as ScientificCalculator).Sin(double.Parse(txtCalcMainDisplay.Text));
+                rtbHistory.Document.ContentStart.InsertTextInRun(sTemp + "\n");
             }
             if (sTemp == "cos")
             {
                 (myCalculator as ScientificCalculator).Cos(double.Parse(txtCalcMainDisplay.Text));
+                rtbHistory.Document.ContentStart.InsertTextInRun(sTemp + "\n");
             }
             if (sTemp == "tan")
             {
                 (myCalculator as ScientificCalculator).Tan(double.Parse(txtCalcMainDisplay.Text));
+                rtbHistory.Document.ContentStart.InsertTextInRun(sTemp + "\n");
             }
             if (sTemp == "cot")
             {
                 (myCalculator as ScientificCalculator).Cot(double.Parse(txtCalcMainDisplay.Text));
+                rtbHistory.Document.ContentStart.InsertTextInRun(sTemp + "\n");
             }
             if (sTemp == "+/-")
             {
                 myCalculator.ChangeSign(double.Parse(txtCalcMainDisplay.Text));
+                rtbHistory.Document.ContentStart.InsertTextInRun(sTemp + "\n");
             }
             myCalculator.StrMainDisplay = myCalculator.CurrResult.ToString();
             txtCalcMainDisplay.Text = myCalculator.CurrResult.ToString();
         }
 
+        private void Btn_StdCalc_EqualOper_Click(object sender, RoutedEventArgs e)
+        {
+            if (myCalculator.LastOperation != CalcOperations.none)
+            {
+                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
+                myCalculator.LastOperation = CalcOperations.none;
+            }
+
+        }
     }
 }

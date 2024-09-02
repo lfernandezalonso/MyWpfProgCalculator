@@ -10,20 +10,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="75"/>
-            <RowDefinition Height="440"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="460"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="640"/>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="480"/>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="txtCalcAuxDisplay" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="415" Height="35" TextAlignment="Right" BorderThickness="0" Grid.Row="0" Grid.Column="1"/>
-        <TextBox x:Name="txtCalcMainDisplay" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="65" FontSize="30" TextAlignment="Right" BorderThickness="0"  Grid.Row="1" Grid.Column="1" Width="600"/>
-
+        <TextBox x:Name="txtCalcMainDisplay" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="65" FontSize="30" TextAlignment="Right" BorderThickness="0"  Grid.Row="1" Grid.Column="1" Width="480"/>
         <TabControl Name="MyTabControl" Grid.Row="2" Grid.Column="1">
             <TabItem Header="Standard Calc" HorizontalAlignment="Left" Width="79" Height="26" VerticalAlignment="Center"  Selector.Selected="TabItem_Selected">
-                <Grid Width="600">
+                <Grid Width="710">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"/>
                         <RowDefinition Height="70"/>
@@ -42,7 +42,7 @@
                         <ColumnDefinition Width="70"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btn_StdCalc_PercOper" Content="%" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold"/>
+                    <Button x:Name="btn_StdCalc_PercOper" Content="%" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Click="BtnBinaryOperator_Click"/>
                     <Button x:Name="btn_StdCalc_CEOper" Content="CE" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="1"/>
                     <Button x:Name="btn_StdCalc_COper" Content="C" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="2" Click="BtnCOper_Click"/>
                     <Button x:Name="btn_StdCalc_DelOper" Content="Del" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Column="3" Click="BtnDelOper_Click"/>
@@ -61,10 +61,10 @@
                     <Button x:Name="btn_StdCalc_Digit2" Content="2" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="1" Click="BtnDigit_Click"/>
                     <Button x:Name="btn_StdCalc_Digit3" Content="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="2" Click="BtnDigit_Click"/>
                     <Button x:Name="btn_StdCalc_AdditionOper" Content="+" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="4" Grid.Column="3" Click="BtnBinaryOperator_Click"/>
-                    <Button x:Name="btn_StdCalc_MinusOrPlus" Content="+/-" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="0"/>
+                    <Button x:Name="btn_StdCalc_MinusOrPlus" Content="+/-" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="0" Click="BtnBinaryOperator_Click"/>
                     <Button x:Name="btn_StdCalc_Digit0" Content="0" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="1" Click="BtnDigit_Click"/>
                     <Button x:Name="btn_StdCalc_DecPoint" Content="." HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="2"/>
-                    <Button x:Name="btn_StdCalc_EqualOper" Content="=" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="3"/>
+                    <Button x:Name="btn_StdCalc_EqualOper" Content="=" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="5" Grid.Column="3" Click="Btn_StdCalc_EqualOper_Click"/>
                     <Button x:Name="btn_StdCalc_FactOper" Content="n!" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="5"/>
                     <Button x:Name="btn_StdCalc_FibOper" Content="fib" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="60" FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="6"/>
                 </Grid>
@@ -125,7 +125,6 @@
             </TabItem>
             <TabItem Header="Imaginary Calc" Height="26" Margin="0,0,0,0" VerticalAlignment="Top"  Selector.Selected="TabItem_Selected"/>
         </TabControl>
-        <Label Grid.Row="3">Selected:</Label>
-        <Label Grid.Row="3" Grid.Column="2" Name="SelectedTabLabel"/>
+        <RichTextBox x:Name="rtbHistory" Margin="0,0,0,0" VerticalAlignment="Top" Width="240" Height="575" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" />
     </Grid>
 </Window>
