@@ -19,12 +19,11 @@ namespace MyWpfProgCalculator
         {
             if (PreviousBtnWasOper)
             {
-                this.CurrResult = double.Parse(this.StrMainDisplay);
-                this.StrMainDisplay = strTemp;
+                CurrResult = double.Parse(StrMainDisplay);
+                StrMainDisplay = strTemp;
             }
             else
             {
-                var tempRes = double.Parse(StrMainDisplay);
                 if (StrMainDisplay != "0")
                 {
                     StrMainDisplay += strTemp;
@@ -34,16 +33,22 @@ namespace MyWpfProgCalculator
                     if (strTemp != "0")
                     {
                         StrMainDisplay = strTemp;
-                        this.CurrResult = double.Parse(this.StrMainDisplay);
+                        CurrResult = double.Parse(StrMainDisplay);
                     }
                     else
                     {
                         StrMainDisplay = "0";
-                        this.CurrResult = 0;
+                        CurrResult = 0;
                     }
                 }
             }
             PreviousBtnWasOper = false;
+        }
+
+        public override void ProcessDecPointInput()
+        {
+            if (StrMainDisplay.IndexOf(".") == -1)
+                StrMainDisplay += ".";
         }
 
         public override void ProcessBinaryOperatorInput(string sTemp)
@@ -117,6 +122,11 @@ namespace MyWpfProgCalculator
             CurrResult = Math.Pow(CurrResult, value);
         }
 
+        public virtual void Percent(double value)
+        {
+            CurrResult = (value * (CurrResult / 100));
+        }
+
         public override void ChangeSign(double value) 
         {
             CurrResult = -value; 
@@ -164,6 +174,9 @@ namespace MyWpfProgCalculator
                         break;
                     case CalcOperations.power:
                         Power(nTemp);
+                        break;
+                    case CalcOperations.percent:
+                        Percent(nTemp);
                         break;
                 }
                 StrMainDisplay = CurrResult.ToString();

@@ -28,6 +28,9 @@ namespace MyWpfProgCalculator
 
         public abstract void ProcessDigitInput(string sTemp);
 
+        public abstract void ProcessDecPointInput();
+
+
         public abstract void ProcessBinaryOperatorInput(string sTemp);
 
         public abstract void Add(double value);

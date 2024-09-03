@@ -2,7 +2,6 @@
 
 namespace MyWpfProgCalculator
 {
-
     public class ScientificCalculator: StandardCalculator
     {
         public override void ProcessBinaryOperatorInput(string sTemp)
@@ -46,16 +45,6 @@ namespace MyWpfProgCalculator
                 LastOperation = CalcOperations.result;
             StrAuxDisplay = CurrResult.ToString() + " " + sTemp;
             PreviousBtnWasOper = true;
-        }
-
-        public virtual void Percent(double value)
-        {
-            CurrResult = (value * (CurrResult/100));
-        }
-
-        public override void ChangeSign(double value)
-        {
-            CurrResult = -value;
         }
 
         public virtual void NthRoot(double value)

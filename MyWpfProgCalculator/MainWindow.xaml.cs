@@ -8,7 +8,6 @@ namespace MyWpfProgCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool previousBtnWasOper;
         private ACalculator myCalculator;
         private string sPreviousTab; 
  
@@ -58,6 +57,12 @@ namespace MyWpfProgCalculator
             {
                 EnableOperationButtons(true);
             }
+        }
+
+        private void BtnDecPoint_Click(object sender, RoutedEventArgs e) 
+        {
+            myCalculator.ProcessDecPointInput();
+            txtCalcMainDisplay.Text = myCalculator.StrMainDisplay;
         }
 
         private void BtnBinaryOperator_Click(object sender, RoutedEventArgs e)
