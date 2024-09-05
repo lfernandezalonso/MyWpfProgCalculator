@@ -30,7 +30,6 @@ namespace MyWpfProgCalculator
 
         public abstract void ProcessDecPointInput();
 
-
         public abstract void ProcessBinaryOperatorInput(string sTemp);
 
         public abstract void Add(double value);
@@ -51,8 +50,9 @@ namespace MyWpfProgCalculator
 
         public abstract void Clear();
 
-        public abstract void DoPendingOperation(string sTemp);
+        public abstract void DoPendingOperation();
 
+        public abstract CalcOperations GetOperationValueGivenStr(string sTemp);
     }
 
 }

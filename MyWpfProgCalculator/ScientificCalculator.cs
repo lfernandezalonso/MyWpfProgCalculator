@@ -14,35 +14,19 @@ namespace MyWpfProgCalculator
             {
                 try
                 {
-                    DoPendingOperation(StrMainDisplay);
+                    DoPendingOperation();
                 }
-                catch (DivideByZeroException)
+                catch (DivideByZeroException ex)
                 {
                     StrMainDisplay = "Cannot divide by zero";
+                    throw ex;
                 }
                 finally
                 {
                     StrMainDisplay = CurrResult.ToString();
                 }
             }
-            if (sTemp == "+")
-                LastOperation = CalcOperations.addition;
-            if (sTemp == "-")
-                LastOperation = CalcOperations.substraction;
-            if (sTemp == "x")
-                LastOperation = CalcOperations.multiplication;
-            if (sTemp == "/")
-                LastOperation = CalcOperations.division;
-            if (sTemp == "mod")
-                LastOperation = CalcOperations.modulus;
-            if (sTemp == "%")
-                LastOperation = CalcOperations.percent;
-            if (sTemp == "^")
-                LastOperation = CalcOperations.power;
-            if (sTemp == "√")
-                LastOperation = CalcOperations.nthroot;
-            if (sTemp == "=")
-                LastOperation = CalcOperations.result;
+            LastOperation = GetOperationValueGivenStr(sTemp);
             StrAuxDisplay = CurrResult.ToString() + " " + sTemp;
             PreviousBtnWasOper = true;
         }
@@ -57,11 +41,11 @@ namespace MyWpfProgCalculator
             CurrResult = 0;
         }
 
-        public override void DoPendingOperation(string sTemp)
+        public override void DoPendingOperation()
         {
             try
             {
-                var nTemp = double.Parse(sTemp);
+                var nTemp = double.Parse(StrMainDisplay);
                 switch (LastOperation)
                 {
                     case CalcOperations.addition:

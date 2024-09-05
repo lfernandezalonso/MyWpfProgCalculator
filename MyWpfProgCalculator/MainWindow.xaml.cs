@@ -139,7 +139,7 @@ namespace MyWpfProgCalculator
         {
             if (myCalculator.LastOperation != CalcOperations.none)
             {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
+                myCalculator.DoPendingOperation();
                 myCalculator.LastOperation = CalcOperations.none;
             }
             var sTemp = ((Button)sender).Content.ToString();
@@ -186,7 +186,7 @@ namespace MyWpfProgCalculator
         {
             if (myCalculator.LastOperation != CalcOperations.none)
             {
-                myCalculator.DoPendingOperation(txtCalcMainDisplay.Text);
+                myCalculator.DoPendingOperation();
                 myCalculator.LastOperation = CalcOperations.none;
             }
 
